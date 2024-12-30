@@ -1,50 +1,42 @@
-# React + TypeScript + Vite
+# Iconify 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Intro
+Iconify is an open-source icon library that enables developers to manage icon sets efficiently and create custom collections, enhancing performance and code organization.
 
-Currently, two official plugins are available:
+## Use cases
+### Creating custom icon collections
+Using `@iconify/tools`, developers can group multiple SVG files into a single JSON file, simplifying the management of extensive icon sets. This approach allows seamless manipulation of icons within a custom component.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Access to 200+ Open-Source Icon Collections
+Iconify includes a wide range of collections such as Lucide, Material UI, MDI, and various community-contributed sets. With this extensive library, finding the perfect icon becomes almost effortless.
 
-## Expanding the ESLint configuration
+### Intuitive Syntax
+Iconify features a straightforward syntax that simplifies the process of declaring icons. The following example demonstrates how customizable and easy-to-use Iconify can be through a custom React component:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```
+import { Icon } from "@iconify/react";
 
-- Configure the top-level `parserOptions` property like this:
+interface IconProps {
+    size: string;
+    color?: string;
+    icon: string;
+}
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+export default function IconComponent({ size, color, icon }: IconProps) {
+    return (
+        <Icon
+            icon={icon}
+            color={color}
+            width={size}
+        />
+    );
+    
+}
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+<IconComponent size="296px" icon="example:react" />
+```
+
+### Seamless Integration with Design Tools
+Iconify offers plugins for popular design tools like Figma and Sketch, enabling designers to easily browse and insert icons directly into their projects. This integration streamlines the design process by providing quick access to a vast library of icons without leaving the design environment. 
